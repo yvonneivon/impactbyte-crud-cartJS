@@ -131,7 +131,6 @@ let deleteCart = list => {
 }
 
 //8 - Memfilter isi cart
-
 let filterCart = list => {
     let isFilterCart = confirm('Do you want to search an item by quantity?')
     let result =[]
@@ -146,11 +145,6 @@ let filterCart = list => {
                 result.push(list[i])
             }
         }
-        
-        
-        /* if (result.length === 0) {
-            result = 'The item is not found' */
-        /* } */
         
         showCart(result);
         tangkyou()
