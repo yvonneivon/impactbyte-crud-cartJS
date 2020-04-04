@@ -200,3 +200,5 @@ let filterCart = list => {
 
 /*C - Main Program*/
 mainCart(callStorage())
+
+//TEST//
