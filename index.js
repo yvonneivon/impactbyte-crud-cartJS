@@ -174,10 +174,10 @@ let deleteCart = list => {
 //8 - Memfilter isi cart
 
 let filterCart = list => {
-    let isFilterChart = confirm('Do you want to search of an item by quantity?')
+    let isFilterCart = confirm('Do you want to search an item by quantity?')
     let result =[]
     
-    if (isFilterChart) {
+    if (isFilterCart) {
         let inputQuantity = prompt('Please put the number of quantity that you want to search')
         
         for (let i = 0; i < list.length; i++) {
@@ -194,11 +194,12 @@ let filterCart = list => {
         }
         
         showCart(result);
-    }
+    
+    } else if (isFilterCart === false) {
+        alert(`Thank you for having us!`);
+    } 
 
 }
 
 /*C - Main Program*/
 mainCart(callStorage())
-
-//TEST//
