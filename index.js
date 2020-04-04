@@ -33,7 +33,7 @@ let showCart = cart => {
 
         // Apabila tidak ada data pada cart
     } else {
-        alert("Your cart is empty")
+        alert("Your cart content: \n no item")
     }
 };
 
@@ -71,7 +71,7 @@ let addCart = list => {
 
         //Menampilkan Cart
         showCart(list)
-
+        tangkyou()
         //Apabila user memilih cancel, masuk ke pilihan editCart
     } else if (isAddCart === false) {
         editCart(list)
@@ -100,7 +100,7 @@ let editCart = list => {
 
         //Menampilkan cart
         showCart(list);
-
+        tangkyou()
         //Apabila user memilih cancel, masuk ke pilihan deleteCart
     } else if (isEditCart === false) {
         deleteCart(list);
@@ -123,7 +123,7 @@ let deleteCart = list => {
 
         // Menampilkan isi cart
         showCart(list);
-
+        tangkyou()
         // Apabila user memilih cancel, masuk ke filterCart
     } else if (isDeleteCart === false) {
         filterCart(list)
@@ -148,16 +148,19 @@ let filterCart = list => {
         }
         
         
-        if (result.length === 0) {
-            result = 'The item is not found'
-        }
+        /* if (result.length === 0) {
+            result = 'The item is not found' */
+        /* } */
         
         showCart(result);
-    
+        tangkyou()
     } else if (isFilterCart === false) {
-        alert(`Thank you for having us!`);
+        tangkyou()
     } 
 
+}
+let tangkyou = ()=> {
+    alert (`Thank you for visiting us`)
 }
 
 /*C - Main Program*/
