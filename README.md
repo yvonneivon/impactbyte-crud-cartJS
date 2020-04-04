@@ -42,4 +42,4 @@ Saturday, 05-03-2020
 5. Masuk filterCart => Apakah user ingin menacari quantity item yang sudah di input?
  * (Ya: masuk ke sistem filter) | (Tidak: langsung masuk thanks note, program berakhir)
  * Ya: masuk ke sistem filter data => menerima input quantity yang akan di cari/search
- * Tampilan berupa nama item dan quantity yang sesuai dengan input angka dari user
+ * Tampilan berupa nama item beserta quantity-nya
