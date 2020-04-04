@@ -1,5 +1,5 @@
 # JavaScript Interaction and Local Storage
-Friday, 04-03-2020
+Saturday, 05-03-2020
 
 ## Index
 * A. Global Variable
@@ -14,7 +14,7 @@ Friday, 04-03-2020
     8. Memfilter isi cart 
 * C. Main Programs
 
-## Urutan Main Programs
+## Urutan Main Program
 1. Menampilkan home 
  * Cek isi storage: Ada isinya atau tidak? 
  * (Kosong: buat array kosong) | (Ada isi: buat array "list" dengan isi yang sudah ada)
@@ -39,7 +39,7 @@ Friday, 04-03-2020
  * Hapus data sesuai index yang dipilih user
  * Simpan update array "list" ke storage => Perlihatkan isi cart
 
-5. Masuk filterCart => Apakah user ingin menacari item yang sudah di input?
+5. Masuk filterCart => Apakah user ingin menacari quantity item yang sudah di input?
  * (Ya: masuk ke sistem filter) | (Tidak: langsung masuk thanks note, program berakhir)
- * Ya: masuk ke sistem filter data => menerima input angka yang akan di cari/search dalam bentuk quantity
+ * Ya: masuk ke sistem filter data => menerima input quantity yang akan di cari/search
  * Tampilan berupa nama item dan quantity yang sesuai dengan input angka dari user
