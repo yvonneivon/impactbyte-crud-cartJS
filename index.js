@@ -54,24 +54,48 @@ let mainCart = list => {
 
 //5 - Menambahkan isi cart
 let addCart = list => {
+    let isSame = false
+    let x = 0   //Index same
     let isAddCart = confirm("Do you want to add item ?")
     //Apabila user memilih ok, masuk ke bagian ini
     if (isAddCart === true) {
         //Meminta input dari user
-        let newItem = prompt("Write your item here")
-        let newQuantity = prompt("Write the quantity here")
+        let newItem = prompt("Write your item here").toLowerCase()
+        let newQuantity = parseInt(prompt("Write the quantity here"))
 
-        //Menyimpan input user ke object : myProduct
-        myProduct.item = newItem;
-        myProduct.quantity = newQuantity;
+        for (let i = 0; i < list.length; i++) {
+            if (newItem === list[i].item) {
+                isSame = true
+                x = i
+            }
+        }
 
-        //Mengakses storage dan menyimpan data ke storage
-        list.push(myProduct)
-        saveData(list)
+        if (isSame === false) {
+            //Menyimpan input user ke object : myProduct
+            myProduct.item = newItem;
+            myProduct.quantity = newQuantity;
 
-        //Menampilkan Cart
-        showCart(list)
-        tangkyou()
+            //Mengakses storage dan menyimpan data ke storage
+            list.push(myProduct)
+            saveData(list)
+
+            //Menampilkan Cart
+            showCart(list)
+            tangkyou()
+
+        } else if (isSame === true) {
+            let isConfirm = confirm(`Warning!\n The item you entered "${list[x].item}" has already in your cart\n Do you want to add the quantity instead?
+            \n The quantity of ${list[x].item} = ${list[x].quantity} will become ${list[x].quantity + newQuantity}`)
+            if (isConfirm === true){
+                list[x].quantity += newQuantity
+                saveData(list)
+                showCart(list)
+                tangkyou()
+            } else if (isConfirm === false){
+                showCart(list)
+                tangkyou()
+            }
+        }
         //Apabila user memilih cancel, masuk ke pilihan editCart
     } else if (isAddCart === false) {
         editCart(list)
@@ -133,28 +157,28 @@ let deleteCart = list => {
 //8 - Memfilter isi cart
 let filterCart = list => {
     let isFilterCart = confirm('Do you want to search an item by quantity?')
-    let result =[]
-    
+    let result = []
+
     if (isFilterCart) {
         let inputQuantity = prompt('Please put the number of quantity that you want to search')
-        
+
         for (let i = 0; i < list.length; i++) {
             let dataQuantity = list[i].quantity
-            
+
             if (dataQuantity == inputQuantity) {
                 result.push(list[i])
             }
         }
-        
+
         showCart(result);
         tangkyou()
     } else if (isFilterCart === false) {
         tangkyou()
-    } 
+    }
 
 }
-let tangkyou = ()=> {
-    alert (`Thank you for visiting us`)
+let tangkyou = () => {
+    alert(`Thank you for visiting us`)
 }
 
 /*C - Main Program*/
