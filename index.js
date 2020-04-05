@@ -63,6 +63,7 @@ let addCart = list => {
         let newItem = prompt("Write your item here").toLowerCase()
         let newQuantity = parseInt(prompt("Write the quantity here"))
 
+        //Cek item yang sama
         for (let i = 0; i < list.length; i++) {
             if (newItem === list[i].item) {
                 isSame = true
@@ -70,6 +71,7 @@ let addCart = list => {
             }
         }
 
+        //Apabila tidak ada item yang sama
         if (isSame === false) {
             //Menyimpan input user ke object : myProduct
             myProduct.item = newItem;
@@ -83,14 +85,19 @@ let addCart = list => {
             showCart(list)
             tangkyou()
 
+            //Apabila ada item yang sama
         } else if (isSame === true) {
+            //Konfirmasi ke user untuk lanjut atau tidak
             let isConfirm = confirm(`Warning!\n The item you entered "${list[x].item}" has already in your cart\n Do you want to add the quantity instead?
             \n The quantity of ${list[x].item} = ${list[x].quantity} will become ${list[x].quantity + newQuantity}`)
+            //Apabila user ingin lanjut, data akan diupdate
             if (isConfirm === true) {
                 list[x].quantity += newQuantity
                 saveData(list)
                 showCart(list)
                 tangkyou()
+
+                //Apabila user tidak ingin lanjut, data tetap sama
             } else if (isConfirm === false) {
                 showCart(list)
                 tangkyou()
@@ -109,6 +116,7 @@ let editCart = list => {
     if (isEditCart === true) {
         //Meminta input dari user
         let indexItem = prompt('Select item number');
+        //Apabila nomor item yang dimasukkan sesuai
         if (indexItem <= list.length) {
             let editCart = prompt('Insert edit item name');
             let editQty = prompt('Insert your item number');
@@ -127,6 +135,7 @@ let editCart = list => {
             showCart(list);
             tangkyou()
 
+            //Apabila nomor item yang dimasukkan tidak sesuai
         } else if (indexItem > list.length) {
             alert("The number of item didn't exist")
             tangkyou()
@@ -145,6 +154,8 @@ let deleteCart = list => {
     if (isDeleteCart === true) {
         // Menerima input index dari user
         let cartNumber = prompt(`Write cart number`);
+
+        //Apabila nomor item yang dimasukkan sesuai
         if (cartNumber <= list.length) {
             // Menghapus data pada index yang dipilih user
             list.splice(cartNumber - 1, 1);
@@ -155,6 +166,8 @@ let deleteCart = list => {
             // Menampilkan isi cart
             showCart(list);
             tangkyou()
+
+            //Apabila nomor yang dimasukkan tidak sesuai
         } else if(cartNumber > list.length){
             alert("The number of item didn't exist")
             tangkyou()
