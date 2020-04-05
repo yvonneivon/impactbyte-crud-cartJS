@@ -86,12 +86,12 @@ let addCart = list => {
         } else if (isSame === true) {
             let isConfirm = confirm(`Warning!\n The item you entered "${list[x].item}" has already in your cart\n Do you want to add the quantity instead?
             \n The quantity of ${list[x].item} = ${list[x].quantity} will become ${list[x].quantity + newQuantity}`)
-            if (isConfirm === true){
+            if (isConfirm === true) {
                 list[x].quantity += newQuantity
                 saveData(list)
                 showCart(list)
                 tangkyou()
-            } else if (isConfirm === false){
+            } else if (isConfirm === false) {
                 showCart(list)
                 tangkyou()
             }
@@ -109,22 +109,29 @@ let editCart = list => {
     if (isEditCart === true) {
         //Meminta input dari user
         let indexItem = prompt('Select item number');
-        let editCart = prompt('Insert edit item name');
-        let editQty = prompt('Insert your item number');
+        if (indexItem <= list.length) {
+            let editCart = prompt('Insert edit item name');
+            let editQty = prompt('Insert your item number');
 
-        //Menyimpan input user ke object : myProduct
-        myProduct.item = editCart;
-        myProduct.quantity = editQty;
+            //Menyimpan input user ke object : myProduct
+            myProduct.item = editCart;
+            myProduct.quantity = editQty;
 
-        //Proses edit: menghapus item pada indexItem-1, menambah item baru pada indexItem-1
-        list.splice(indexItem - 1, 1, myProduct);
+            //Proses edit: menghapus item pada indexItem-1, menambah item baru pada indexItem-1
+            list.splice(indexItem - 1, 1, myProduct);
 
-        //Menyimpan data baru ke storage
-        saveData(list);
+            //Menyimpan data baru ke storage
+            saveData(list);
 
-        //Menampilkan cart
-        showCart(list);
-        tangkyou()
+            //Menampilkan cart
+            showCart(list);
+            tangkyou()
+
+        } else if (indexItem > list.length) {
+            alert("The number of item didn't exist")
+            tangkyou()
+        }
+
         //Apabila user memilih cancel, masuk ke pilihan deleteCart
     } else if (isEditCart === false) {
         deleteCart(list);
@@ -138,16 +145,21 @@ let deleteCart = list => {
     if (isDeleteCart === true) {
         // Menerima input index dari user
         let cartNumber = prompt(`Write cart number`);
+        if (cartNumber <= list.length) {
+            // Menghapus data pada index yang dipilih user
+            list.splice(cartNumber - 1, 1);
 
-        // Menghapus data pada index yang dipilih user
-        list.splice(cartNumber - 1, 1);
+            // Menyimpan data ke storage
+            saveData(list);
 
-        // Menyimpan data ke storage
-        saveData(list);
+            // Menampilkan isi cart
+            showCart(list);
+            tangkyou()
+        } else if(cartNumber > list.length){
+            alert("The number of item didn't exist")
+            tangkyou()
+        }
 
-        // Menampilkan isi cart
-        showCart(list);
-        tangkyou()
         // Apabila user memilih cancel, masuk ke filterCart
     } else if (isDeleteCart === false) {
         filterCart(list)
