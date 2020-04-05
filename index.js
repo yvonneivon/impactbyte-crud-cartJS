@@ -119,7 +119,7 @@ let editCart = list => {
         //Apabila nomor item yang dimasukkan sesuai
         if (indexItem <= list.length) {
             let editCart = prompt('Insert edit item name');
-            let editQty = prompt('Insert your item number');
+            let editQty = parseInt(prompt('Insert your item number'));
 
             //Menyimpan input user ke object : myProduct
             myProduct.item = editCart;
